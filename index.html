@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Meu Primeiro Game</title>
+	<meta charset="utf-8">
+	<style>
+	.area{
+		width: 130vh;
+		height: 93vh;
+		border:1px solid;
+		background-image:url(fundo.jpg);
+		margin-left: 230px;
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	.bola{
+		width: 7vh;
+		height: 7vh;
+		border-radius: 5vh;
+		background-color: darkblue;
+		display: none;
+	
+	}
+	#timer{
+		float: right;
+		color: white;
+		font-size: 50px;
+		margin-right: 2px;
+		z-index: 99;
+}
+#button#play{
+	margin-left: 300px
+	background-position: center;
+	background-size: contain;
+}
+body{
+		background-image:url(grama.jpg);
+		background-repeat: no-repeat;
+		background-size: 2000px;
+}
+button#play{
+	margin-left: 250px;
+	font-size: 20px;
+}
+button#pontos{
+font-size: 20px;
+}
+	</style>
+
+</head>
+<body>
+	<div class="area">
+		<span id=timer>30</span>
+		<div class="bola"></div>
+	</div>
+	<button id="play">play</button>
+	<button id="pontos">pontos=0</button>
+
+	<script src="jquery-3.3.1.slim.min.js"></script>
+	<script>	
+		var pontos=0;
+		var tempo=1000;
+		var timer=30;
+			$(document).on('click','#play',function(){
+			$('.bola').show();
+	setInterval(function(){
+		if(timer!=0){
+
+		
+		var largura=parseInt($('.area').css('width'));
+		var altura=parseInt($('.area').css('height'));
+		var l = random = Math.ceil(Math.random() * (largura-50));
+		var t = random = Math.floor(Math.random() * (altura-50));
+			$('.bola').css('margin-left',l+'px');
+			$('.bola').css('margin-top',t+'px');
+			//contador de tempo
+			timer--;
+			$('#timer').html(timer);
+		}else{
+			$('.bola'),hide();
+		}
+		},tempo);
+
+	});		
+			$(document).on('click','.bola',function(){
+				pontos++;
+				tempo-=50
+			$('#pontos').html("pontos="+pontos);	
+	});	
+	</script>
+</body>
+</html>
